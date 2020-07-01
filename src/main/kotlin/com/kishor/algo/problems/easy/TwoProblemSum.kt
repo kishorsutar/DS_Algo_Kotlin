@@ -24,7 +24,7 @@ fun twoNumberSumWithSort(array: MutableList<Int>, targetSum: Int): List<Int> {
         val currentSum = array[left] + array[right]
         when {
             currentSum == targetSum -> {
-                return listOf(left, right)
+                return listOf(array[left], array[right])
             }
             currentSum < targetSum -> {
                 left++
