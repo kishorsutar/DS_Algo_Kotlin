@@ -10,7 +10,8 @@ fun main() {
 //    adjM.dfsSpanningTree(0)
 //    adjM.bfsSpanningTree(0)
 //    println("${adjM.dfsIsConnected(0)}")
-    adjM.bfsSingleSourcePathLength(0)
+    println("${adjM.biPartiteGraph(0)}")
+//    adjM.bfsSingleSourcePathLength(0)
 }
 
 class AdjacencyMatrix(var vertCount: Int = 0) {
@@ -168,6 +169,37 @@ class AdjacencyMatrix(var vertCount: Int = 0) {
             println("Distance from $start --> $d")
 
         }
+    }
+
+    fun biPartiteGraph(start: Int) : Boolean {
+        val noColor = 0
+        val yellow = 1
+        val green = -1
+
+        val color = IntArray(vertCount) {noColor}
+        val queue = LinkedList<Int>()
+
+        queue.offer(start)
+        color[start] = yellow
+        println("Is bipartite graph")
+
+        while (queue.isNotEmpty()) {
+            val vert = queue.poll()
+
+            for (i in 0 until vertCount) {
+                if (matrix[vert][i] == 1) {
+                    if (color[i] == color[vert]) {
+                        return false
+                    } else if (color[i] == noColor) {
+                        queue.offer(i)
+                        color[i] = -1 * color[vert]
+                    }
+                }
+            }
+        }
+
+
+        return true
     }
 
 }
