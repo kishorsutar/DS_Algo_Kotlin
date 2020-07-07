@@ -7,9 +7,10 @@ fun main() {
     adjM.accept(Scanner(System.`in`))
     adjM.display()
 //    adjM.dfsTrav(0)
-    adjM.dfsSpanningTree(0)
-    adjM.bfsSpanningTree(0)
+//    adjM.dfsSpanningTree(0)
+//    adjM.bfsSpanningTree(0)
 //    println("${adjM.dfsIsConnected(0)}")
+    adjM.bfsSingleSourcePathLength(0)
 }
 
 class AdjacencyMatrix(var vertCount: Int = 0) {
@@ -121,7 +122,7 @@ class AdjacencyMatrix(var vertCount: Int = 0) {
         val queue = LinkedList<Int>()
         val visited = BooleanArray(vertCount) { false }
 
-        queue.add(start)
+        queue.offer(start)
         visited[start] = true
         println("BFS spanning tree")
         while (queue.isNotEmpty()) {
@@ -132,7 +133,7 @@ class AdjacencyMatrix(var vertCount: Int = 0) {
                     && !visited[i]
                 ) {
                     visited[i] = true
-                    queue.add(i)
+                    queue.offer(i)
                     println("Trev $vert --> $i")
                 }
             }
@@ -140,6 +141,33 @@ class AdjacencyMatrix(var vertCount: Int = 0) {
         }
         println()
 
+    }
+
+    fun bfsSingleSourcePathLength(start: Int) {
+        val dist = IntArray(vertCount-1) {0}
+        val queue = LinkedList<Int>()
+        val visited = BooleanArray(vertCount) {false}
+
+        queue.offer(start)
+        visited[start] = true
+        println("Singel source path")
+        while (queue.isNotEmpty()) {
+            val vert = queue.poll()
+            for (i in 0 until vertCount) {
+                if (matrix[vert][i] == 1
+                    && !visited[i]) {
+                    queue.offer(i)
+                    visited[i] = true
+                    dist[i] = dist[vert] + 1
+                }
+            }
+
+        }
+
+        for (d in dist) {
+            println("Distance from $start --> $d")
+
+        }
     }
 
 }
