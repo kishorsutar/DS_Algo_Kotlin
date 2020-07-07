@@ -6,8 +6,9 @@ fun main() {
     val adjM = AdjacencyMatrix(7)
     adjM.accept(Scanner(System.`in`))
     adjM.display()
-    adjM.dfsTrav(0)
-    println("${adjM.dfsIsConnected(0)}")
+//    adjM.dfsTrav(0)
+    adjM.dfsSpanningTree(0)
+//    println("${adjM.dfsIsConnected(0)}")
 }
 
 class AdjacencyMatrix(var vertCount: Int = 0) {
@@ -88,6 +89,28 @@ class AdjacencyMatrix(var vertCount: Int = 0) {
         println()
 
         return false
+    }
+
+    fun dfsSpanningTree(start: Int) {
+        val stack = Stack<Int>()
+        val visited = BooleanArray(vertCount) { false }
+        stack.push(start)
+        visited[start] = true
+        println("DFS spanning tree")
+
+        while (stack.isNotEmpty()) {
+            var vert = stack.pop()
+
+            for (i in 0 until vertCount) {
+                if (!visited[i]
+                    && matrix[vert][i] == 1) {
+                    stack.push(i)
+                    visited[i] = true
+                    println("Trev $vert --> $i")
+                }
+            }
+        }
+
     }
 
 }
