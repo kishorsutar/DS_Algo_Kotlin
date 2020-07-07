@@ -8,6 +8,7 @@ fun main() {
     adjM.display()
 //    adjM.dfsTrav(0)
     adjM.dfsSpanningTree(0)
+    adjM.bfsSpanningTree(0)
 //    println("${adjM.dfsIsConnected(0)}")
 }
 
@@ -99,17 +100,45 @@ class AdjacencyMatrix(var vertCount: Int = 0) {
         println("DFS spanning tree")
 
         while (stack.isNotEmpty()) {
-            var vert = stack.pop()
+            val vert = stack.pop()
 
             for (i in 0 until vertCount) {
                 if (!visited[i]
-                    && matrix[vert][i] == 1) {
+                    && matrix[vert][i] == 1
+                ) {
                     stack.push(i)
                     visited[i] = true
                     println("Trev $vert --> $i")
                 }
             }
         }
+        println()
+
+    }
+
+
+    fun bfsSpanningTree(start: Int) {
+        val queue = LinkedList<Int>()
+        val visited = BooleanArray(vertCount) { false }
+
+        queue.add(start)
+        visited[start] = true
+        println("BFS spanning tree")
+        while (queue.isNotEmpty()) {
+            val vert = queue.poll()
+
+            for (i in 0 until vertCount) {
+                if (matrix[vert][i] == 1
+                    && !visited[i]
+                ) {
+                    visited[i] = true
+                    queue.add(i)
+                    println("Trev $vert --> $i")
+                }
+            }
+
+        }
+        println()
 
     }
 
