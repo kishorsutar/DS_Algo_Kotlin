@@ -5,7 +5,7 @@ import java.util.*
 fun main() {
     val adjM = AdjacencyMatrix(7)
     adjM.accept(Scanner(System.`in`))
-//    adjM.display()
+    adjM.display()
     adjM.dfsTrav(0)
     println("${adjM.dfsIsConnected(0)}")
 }
