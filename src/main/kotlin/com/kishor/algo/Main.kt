@@ -1,6 +1,6 @@
 package com.kishor.algo
 
-import com.kishor.algo.problems.easy.twoNumberSumWithSort
+import com.kishor.algo.problems.arrayandstrings.twoNumberSumWithSort
 
 
 fun main(args: Array<String>) {

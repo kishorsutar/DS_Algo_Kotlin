@@ -1,4 +1,4 @@
-package com.kishor.algo.problems.easy
+package com.kishor.algo.problems.arrayandstrings
 
 fun twoNumberSumWithHashSet(array: MutableList<Int>, targetSum: Int): List<Int> {
 
