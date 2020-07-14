@@ -3,9 +3,10 @@ package com.kishor.algo.algorithms.graph
 import java.util.*
 
 fun main() {
-    val adjacencyMatrixWeightedGraph = UnionFind(6)
-    adjacencyMatrixWeightedGraph.accept(Scanner(System.`in`))
-    adjacencyMatrixWeightedGraph.display()
+    val unionFind = UnionFind(6)
+    unionFind.accept(Scanner(System.`in`))
+    unionFind.display()
+    println(unionFind.containsCycle())
 }
 
 
@@ -52,13 +53,13 @@ class UnionFind(val vertCount: Int) {
     }
 
     fun find(v: Int, parent: IntArray) : Int {
-
+        var t = v
         for ( ele in parent.indices) {
-            if (ele == -1) {
-                return  ele
+            if (parent[ele] != -1) {
+                t = parent[ele]
             }
         }
-        return v
+        return t
 
 //        var ver = -1
 //        while (parent[v] != -1) {
@@ -72,7 +73,16 @@ class UnionFind(val vertCount: Int) {
     }
 
     fun containsCycle() : Boolean {
+         val parent = IntArray(vertCount) {-1}
 
+        for (e in edgeList) {
+            val sr = find(e.src, parent)
+            val dst = find(e.dst, parent)
+            if (sr == dst) {
+                return true
+            }
+            union(sr, dst, parent)
+        }
 
         return false
     }
