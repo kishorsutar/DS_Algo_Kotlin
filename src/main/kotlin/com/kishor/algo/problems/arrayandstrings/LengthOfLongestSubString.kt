@@ -51,7 +51,7 @@ fun longestSubstringLength(s: String): Int {
     val index = IntArray(128) {0}
     var ans = 0
     var i = 0
-    for (j in 0 until n) {
+    for (j in s.indices) {
         i = Math.max(index[s[j].toInt()], i)
         ans = Math.max(ans, j - i + 1)
         index[s[j].toInt()] = j + 1
