@@ -10,7 +10,6 @@ fun main() {
 }
 
 
-
 class UnionFind(val vertCount: Int) {
 
     private data class Edge(val src: Int, val dst: Int, val weight: Int) {
@@ -20,14 +19,14 @@ class UnionFind(val vertCount: Int) {
     }
 
 
-    var matrix = Array(vertCount) { Array(vertCount) {Int.MAX_VALUE} }
+    var matrix = Array(vertCount) { Array(vertCount) { Int.MAX_VALUE } }
     private val edgeList = mutableListOf<Edge>()
 
     fun accept(sc: Scanner) {
         println("Enter the edge count:")
         val edgeCount = sc.nextInt()
         println("Enter number of " + edgeCount + "src - - dst --- weight")
-        for (i in  0..edgeCount) {
+        for (i in 0..edgeCount) {
             val src = sc.nextInt()
             val dst = sc.nextInt()
             val weight = sc.nextInt()
@@ -42,7 +41,7 @@ class UnionFind(val vertCount: Int) {
         for ((i, element) in matrix.withIndex()) {
             println()
             for (j in element.indices) {
-                if(matrix[i][j] == Int.MAX_VALUE) {
+                if (matrix[i][j] == Int.MAX_VALUE) {
                     print("\t#")
                 } else {
                     print("\t${matrix[i][j]}")
@@ -52,9 +51,9 @@ class UnionFind(val vertCount: Int) {
         }
     }
 
-    fun find(v: Int, parent: IntArray) : Int {
+    fun find(v: Int, parent: IntArray): Int {
         var t = v
-        for ( ele in parent.indices) {
+        for (ele in parent.indices) {
             if (parent[ele] != -1) {
                 t = parent[ele]
             }
@@ -72,8 +71,8 @@ class UnionFind(val vertCount: Int) {
         parent[src] = dst
     }
 
-    fun containsCycle() : Boolean {
-         val parent = IntArray(vertCount) {-1}
+    fun containsCycle(): Boolean {
+        val parent = IntArray(vertCount) { -1 }
 
         for (e in edgeList) {
             val sr = find(e.src, parent)
