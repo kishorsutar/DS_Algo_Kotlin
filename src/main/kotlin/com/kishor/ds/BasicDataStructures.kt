@@ -1,5 +1,7 @@
 package com.kishor.ds
 
+import java.util.*
+
 fun main() {
 //    allNumbers()
 //
@@ -22,7 +24,8 @@ fun main() {
 //    kotlinSetStructure()
 //    creatingHashMap()
 //    creatingMutableHashMap()
-    filteringAndTransformingMap()
+//    filteringAndTransformingMap()
+    stackUsage()
 }
 
 
@@ -345,4 +348,24 @@ fun sequenceAsDS() {
 
     sequence.toList()
 //    list.asSequence()
+}
+
+fun stackUsage() {
+    // using ArrayDequeue as stack for faster performance
+    val stack = ArrayDeque<String>()
+    stack.push("Iron man")
+    stack.push("Thor")
+    stack.push("Spider man")
+//    stack.add("Thor") // add last as queue
+
+    stack.forEach {
+        println("foreach stack $it")
+    }
+
+    for (name in 0 until stack.size) {
+            println("---")
+    }
+        println("FOr ${stack.pop()}")
+
+
 }
