@@ -1,6 +1,7 @@
 package com.kishor.ds
 
 import java.util.*
+import kotlin.collections.HashMap
 
 fun main() {
 //    allNumbers()
@@ -17,7 +18,7 @@ fun main() {
 
 //    flattenListAndArray()
 
-//    combiningMutableList()
+    combiningMutableList()
 
 //    mapOperations()
 
@@ -25,7 +26,9 @@ fun main() {
 //    creatingHashMap()
 //    creatingMutableHashMap()
 //    filteringAndTransformingMap()
-    stackUsage()
+//    stackUsage()
+//    joinToStringEx()
+
 }
 
 
@@ -37,6 +40,7 @@ private fun declerationOfString() {
     val fulChar = 'x'
 
     val c: Char = 'f' // 16 bit unicode character less memory compared to String, so for single character use char.
+
 }
 
 private fun allNumbers() {
@@ -146,6 +150,7 @@ fun immutabelList() {
     //filter
     list.filter { it.contains('k') }
     list.filterNot { it.contains('k') }
+    val testJoinToString = list.joinToString("_")
 
 }
 
@@ -203,6 +208,9 @@ fun combiningMutableList() {
     println(allTogether)
     println(minusSomeData)
     println(minusSomeList)
+
+    println("this is join to ${listName.toString()}")
+    println("this is join to ${listName.joinToString("_")}")
 }
 
 fun mapOperations() {
@@ -302,6 +310,17 @@ fun creatingMutableHashMap() {
 
 fun filteringAndTransformingMap() {
     val testMap = mutableMapOf<Char, Int>()
+    val oneMore: MutableMap<Char, Int> = HashMap<Char, Int>()
+    'r' in oneMore
+    if ('e' in oneMore) {
+
+    }
+    // in map
+
+    if ('r' in testMap) {
+
+    }
+
     val mutableMapOf = mutableMapOf(
         "IM" to "Iron Man",
         "CA" to "Captain America",
@@ -363,9 +382,30 @@ fun stackUsage() {
     }
 
     for (name in 0 until stack.size) {
-            println("---")
+        println("---")
     }
-        println("FOr ${stack.pop()}")
 
+    println("FOr ${stack.pop()}")
+}
 
+/**
+ * creates a new string object of given collection
+ * unlike toString() method returns string representation of collection
+ */
+fun joinToStringEx() {
+    val mTestList = mutableListOf<String>()
+    mTestList.add("kishor")
+    mTestList.add("Rupali")
+
+    val listOf = listOf<String>(
+        "IronMan",
+        "Thor",
+        "Hulk"
+    )
+
+    val result1 = mTestList.joinToString("i")
+    println(result1)
+
+    val result2 = listOf.joinToString("I")
+    println(result2)
 }

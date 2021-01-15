@@ -43,6 +43,7 @@ fun conditionals() {
 
     //single line conditionals
     if (calories > 2000) println("Calories exceeded") else println("calories defficient")
+
 }
 
 fun truthTables() {
