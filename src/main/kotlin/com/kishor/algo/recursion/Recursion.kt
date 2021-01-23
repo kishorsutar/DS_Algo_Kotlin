@@ -3,7 +3,8 @@ package com.kishor.algo.recursion
 fun main() {
     headRecursion(5)
     tailRecursion(5)
-    println("Result ${factorial(10)}")
+    println("Result head ${factorial(10)}")
+    println("Result tail ${factoTail(10)}")
 }
 
 fun headRecursion(n: Int) {
@@ -33,3 +34,11 @@ fun factorial(n: Int): Int {
     return result
 }
 
+fun factoTail(n: Int): Int {
+    return factorial(n, 1)
+}
+
+fun factorial(n: Int, accumulator: Int): Int {
+    if (n == 1) return accumulator
+    return factorial(n - 1, n * accumulator)
+}
