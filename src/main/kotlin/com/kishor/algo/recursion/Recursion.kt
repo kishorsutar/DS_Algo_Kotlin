@@ -3,6 +3,7 @@ package com.kishor.algo.recursion
 fun main() {
     headRecursion(5)
     tailRecursion(5)
+    println("Result ${factorial(10)}")
 }
 
 fun headRecursion(n: Int) {
@@ -24,3 +25,11 @@ fun tailRecursion(n: Int) {
     // recursive call
     tailRecursion(n - 1)
 }
+
+// factorial with head recursion
+fun factorial(n: Int): Int {
+    if (n == 1) return 1
+    val result = n * factorial(n - 1)
+    return result
+}
+
