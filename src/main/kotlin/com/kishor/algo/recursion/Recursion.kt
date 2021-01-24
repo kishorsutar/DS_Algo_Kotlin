@@ -7,6 +7,7 @@ fun main() {
 //    println("Result tail ${factoTail(10)}")
     println("Fibo Head ${headFibonacci(20)}")
     println("Fibo Tail ${tailFibo(100, 0, 1)}")
+    println("Iterative Fibo ${iterativeFibo(10)}")
 }
 
 fun headRecursion(n: Int) {
@@ -58,6 +59,21 @@ fun tailFibo(n: Int, a: Long, b: Long): Long {
     if (n == 1) return b
     return tailFibo(n - 1, b, a + b)
 }
+
+fun iterativeFibo(n: Int): Int {
+    var result = 0
+    var num = n
+    while (num > 0) {
+        if (num == 1) {
+            result = 1
+        }
+        result = (num - 1) + (num - 2)
+        num--
+    }
+
+    return result
+}
+
 
 
 
