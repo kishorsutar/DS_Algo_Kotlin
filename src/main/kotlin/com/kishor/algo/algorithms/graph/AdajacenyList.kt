@@ -3,9 +3,16 @@ package com.kishor.algo.algorithms.graph
 import java.util.*
 
 fun main() {
-    val adjL = AdajacenyList(7)
-    adjL.accept(Scanner(System.`in`))
-    adjL.display()
+//    val adjL = AdajacenyList(7)
+//    adjL.accept(Scanner(System.`in`))
+//    adjL.display()
+
+    val visited: BooleanArray = BooleanArray(7) { false }
+
+    val adjacencyList = AdjacencyList()
+    val graph = adjacencyList.buildGraph()
+    adjacencyList.dfs(graph, 0, visited)
+
 }
 data class Edge(val src: Int, val dst: Int, val weight: Int) {
     override fun toString(): String {
@@ -40,7 +47,6 @@ class AdajacenyList(vertCount: Int) {
 //            }
 //        }
 
-
         for (i in vertList.indices) {
             print("v$i\t")
 
@@ -48,9 +54,50 @@ class AdajacenyList(vertCount: Int) {
             println()
         }
     }
-
-
 }
+
+
+class AdjacencyList() {
+
+    fun buildGraph(): MutableMap<Int, List<Edge>> {
+        val graph = mutableMapOf<Int, List<Edge>>()
+
+        val edge1 = Edge(1, 0, 1)
+        val edge2 = Edge(2, 0, 1)
+        val edge3 = Edge(6, 0, 1)
+        val edge4 = Edge(1, 2, 1)
+        val edge5 = Edge(1, 4, 1)
+        val edge6 = Edge(3, 4, 1)
+        val edge7 = Edge(3, 5, 1)
+        val edge8 = Edge(6, 5, 1)
+        val edge9 = Edge(4, 6, 1)
+
+        graph[0] = listOf(edge1, edge2, edge3)
+        graph[2] = listOf(edge4)
+        graph[4] = listOf(edge5, edge6)
+        graph[5] = listOf(edge7, edge8)
+        graph[6] = listOf(edge9)
+
+        return graph
+    }
+    data class Edge(val to: Int, val from: Int, val id: Int)
+
+    fun dfs(graph: MutableMap<Int, List<Edge>>, at: Int, visited: BooleanArray) {
+
+        if (visited[at]) return
+
+        visited[at] = true
+        val listOfNeighbours = graph[at]
+        listOfNeighbours?.let {
+            for (neighbour in listOfNeighbours) {
+                    println("Edge from ${neighbour.from} to ${neighbour.to}")
+                    dfs(graph, neighbour.to, visited)
+            }
+        }
+
+    }
+}
+
 
 //9
 //0 1
