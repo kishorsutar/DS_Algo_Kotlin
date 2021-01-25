@@ -11,8 +11,9 @@ fun main() {
 
     val adjacencyList = AdjacencyList()
     val graph = adjacencyList.buildGraph()
-    adjacencyList.dfs(graph, 0, visited)
-    adjacencyList.dfs(graph, 0, 7)
+//    adjacencyList.dfs(graph, 0, visited)
+//    adjacencyList.dfs(graph, 0, 7)
+    adjacencyList.breadthFirstSearch(graph, 0, 7)
 
 }
 
@@ -122,6 +123,31 @@ class AdjacencyList() {
             }
         }
     }
+
+    fun breadthFirstSearch(graph: MutableMap<Int, List<Edge>>, rootId: Int, numberOfVertex: Int) {
+        val visited = BooleanArray(numberOfVertex) { false }
+        val queue = ArrayDeque<Int>()
+
+        queue.offer(rootId)
+        println("Visited $rootId")
+        visited[rootId] = true
+
+        while (queue.isNotEmpty()) {
+            val current = queue.poll()
+            val list = graph[current]
+
+            list?.let {
+                for (edge in list) {
+                    if (!visited[edge.to]) {
+                        queue.offer(edge.to)
+                        println("Visited ${edge.to}")
+                        visited[edge.to] = true
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 
