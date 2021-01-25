@@ -12,8 +12,10 @@ fun main() {
     val adjacencyList = AdjacencyList()
     val graph = adjacencyList.buildGraph()
     adjacencyList.dfs(graph, 0, visited)
+    adjacencyList.dfs(graph, 0, 7)
 
 }
+
 data class Edge(val src: Int, val dst: Int, val weight: Int) {
     override fun toString(): String {
         return "src: $src to dest: $dst weight: $weight"
@@ -80,6 +82,7 @@ class AdjacencyList() {
 
         return graph
     }
+
     data class Edge(val to: Int, val from: Int, val id: Int)
 
     fun dfs(graph: MutableMap<Int, List<Edge>>, at: Int, visited: BooleanArray) {
@@ -88,13 +91,36 @@ class AdjacencyList() {
 
         visited[at] = true
         val listOfNeighbours = graph[at]
+        println("Recursive visit $at")
+
         listOfNeighbours?.let {
             for (neighbour in listOfNeighbours) {
-                    println("Edge from ${neighbour.from} to ${neighbour.to}")
-                    dfs(graph, neighbour.to, visited)
+                dfs(graph, neighbour.to, visited)
             }
         }
 
+    }
+
+    fun dfs(graph: MutableMap<Int, List<Edge>>, rootId: Int, numberOfVertex: Int) {
+        val visited = BooleanArray(numberOfVertex) { false }
+        val stack = ArrayDeque<Int>()
+        stack.push(rootId)
+        println("Iterative Visit $rootId")
+
+        while (!stack.isEmpty()) {
+            val current = stack.pop()
+            val list = graph[current]
+
+            list?.let {
+                for (edge in list) {
+                    if (!visited[edge.to]) {
+                        stack.push(edge.to)
+                        visited[edge.to] = true
+                        println("Iterative Visit ${edge.to}")
+                    }
+                }
+            }
+        }
     }
 }
 
