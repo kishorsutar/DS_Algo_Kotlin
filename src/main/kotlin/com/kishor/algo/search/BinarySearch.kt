@@ -14,7 +14,7 @@ class BinarySearch {
         var right = list.size - 1
         var mid = 0
         while (left <= right) {
-            mid = (left + right)/2
+            mid = (left + right) / 2
             if (list[mid] == value) {
                 return mid
             } else if (value < list[mid]) {
@@ -27,12 +27,12 @@ class BinarySearch {
         return -1
     }
 
-    fun binarySearch(list: Array<Int>,  item: Int): Int {
+    fun binarySearch(list: Array<Int>, item: Int): Int {
         var left = 0
         var right = list.size - 1
 
         while (left <= right) { // <= is imp since middle element might miss
-            var mid = (left + right)/2
+            var mid = (left + right) / 2
 
             if (list[mid] == item) {
                 return mid
@@ -47,13 +47,13 @@ class BinarySearch {
         return -1
     }
 
-    fun binaryRecursive(list: Array<Int>,  item: Int): Int {
+    fun binaryRecursive(list: Array<Int>, item: Int): Int {
         return binaryHelper(list, item, 0, list.size - 1)
     }
 
-    private fun binaryHelper(list: Array<Int>, item: Int, left: Int, right: Int): Int{
-        if (right < left)  return  -1
-        val mid = (left + right)/2
+    private fun binaryHelper(list: Array<Int>, item: Int, left: Int, right: Int): Int {
+        if (right < left) return -1
+        val mid = (left + right) / 2
         if (list[mid] == item) return mid
 
         if (item < list[mid]) {
@@ -62,7 +62,4 @@ class BinarySearch {
             return binaryHelper(list, item, mid + 1, right)
         }
     }
-
-
-
 }
