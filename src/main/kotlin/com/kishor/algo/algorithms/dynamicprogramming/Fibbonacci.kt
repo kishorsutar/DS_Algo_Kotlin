@@ -5,8 +5,8 @@ fun main() {
     table.put(0, 1)
     table.put(1, 1)
     println("Fibbo recursion ${fibbonacciRecursion(30)}")
-    println("Fibbo Memoization ${fibbonacciMemoization(30, table)}")
-    println("Fibbo Tabbulation ${fibbonacciTabbulation(30, table)}")
+    println("Fibbo Memoization ${fibbonacciMemoization(100, table)}")
+    println("Fibbo Tabbulation ${fibbonacciTabbulation(100, table)}")
 }
 
 // recursion
@@ -24,7 +24,8 @@ fun fibbonacciMemoization(n: Int, table: MutableMap<Int, Long>): Long {
     if (n == 0) return 1
     if (n == 1) return 1
 
-    table.putIfAbsent(n, fibbonacciMemoization(n-1, table)+fibbonacciMemoization(n-2,table))
+    if (!table.containsKey(n))
+        table[n] = fibbonacciMemoization(n-1, table)+fibbonacciMemoization(n-2,table)
 
     return table[n]!!
 }
