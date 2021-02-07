@@ -7,6 +7,8 @@ fun main() {
     Math.min(10, 5)
 
     var test: Pair<Int, Int> = Pair(1, 2)
+
+    println(isAnagram("restful", "furstel"))
 }
 
 
@@ -96,6 +98,26 @@ fun isWordStretchy(wordMap: MutableMap<Char, Int>, stringMap: MutableMap<Char, I
         } else if (wordMap[key]!! <= value) {
             continue
         }
+    }
+
+    return true
+}
+
+fun isAnagram(str1: String, str2: String): Boolean {
+    val intArray = IntArray(26) { 0 }
+    for (i in 0 until str1.length) {
+        val c = str1[i].toInt() - 96
+        intArray[c] += 1
+    }
+
+
+    for (i in 0 until str2.length) {
+        val c = str2[i].toInt() - 96
+        intArray[c] -= 1
+    }
+
+    intArray.forEach { it ->
+        if (it > 0) return false
     }
 
     return true
