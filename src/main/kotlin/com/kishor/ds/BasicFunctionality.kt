@@ -1,5 +1,8 @@
 package com.kishor.ds
 
+import java.lang.Math.abs
+
+
 fun main() {
 //    conditionals()
 //    referntialEquality()
@@ -23,7 +26,8 @@ fun main() {
 //    combinWithWUniqueOperator()
 //    iterateWithIndexed()
 //    rangesInKotlin()
-    ternaryOperator()
+//    ternaryOperator()
+    mathFunction()
 }
 
 
@@ -251,3 +255,14 @@ fun ternaryOperator() {
     println(result)
 }
 
+fun mathFunction() {
+    val array = arrayOf(2, 4, 5, 3, 2, 1, 5)
+    for (i in 0 until array.size) {
+        if (array[kotlin.math.abs(array[i])] > 0) {
+            val d = kotlin.math.abs(array[i])
+            array[d] = -array[kotlin.math.abs(array[i])]
+        } else {
+            println("duplicate ${array[i]}")
+        }
+    }
+}
