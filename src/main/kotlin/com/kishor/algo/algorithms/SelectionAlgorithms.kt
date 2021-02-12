@@ -1,4 +1,4 @@
-package com.kishor.algo
+package com.kishor.algo.algorithms
 
 fun main() {
     val quickSelect = QuickSelect(arrayOf(2, 4, 7, -1, 0, 9))

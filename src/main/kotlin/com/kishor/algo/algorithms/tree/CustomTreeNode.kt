@@ -1,4 +1,4 @@
-package com.kishor.algo.tree
+package com.kishor.algo.algorithms.tree
 
 data class CustomTreeNode(
     val id: Int = 0,
