@@ -1,6 +1,10 @@
 package com.kishor.ds
 
 import java.lang.Math.abs
+import java.util.Arrays
+
+
+
 
 
 fun main() {
@@ -27,7 +31,9 @@ fun main() {
 //    iterateWithIndexed()
 //    rangesInKotlin()
 //    ternaryOperator()
-    mathFunction()
+//    mathFunction()
+    substringMethod()
+
 }
 
 
@@ -265,4 +271,28 @@ fun mathFunction() {
             println("duplicate ${array[i]}")
         }
     }
+}
+
+fun substringMethod() {
+    val string = "momio"
+    for (i in string.indices) {
+        for (j in i+1 until string.length) {
+            println(string.substring(i, j))
+        }
+    }
+}
+
+fun isAnagramSort(string1: String, string2: String): Boolean {
+    for (c in string1) {
+
+    }
+
+    if (string1.length != string2.length) {
+        return false
+    }
+    val a1 = string1.toCharArray()
+    val a2 = string2.toCharArray()
+    Arrays.sort(a1)
+    Arrays.sort(a2)
+    return a1.contentEquals(a2)
 }

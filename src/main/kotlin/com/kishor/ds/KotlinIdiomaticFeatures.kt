@@ -8,8 +8,9 @@ fun main(args: Array<String>) {
 //    generatingSequenceAsList()
 //    generatingSequence()
 
-    requireNotNull()
+//    requireNotNull()
 
+    checkArrayGroupBy()
 }
 
 fun generatingSequenceAsList() {
@@ -85,4 +86,26 @@ fun requireNotNull() {
     val people: People? = null
     val result = requireNotNull(people, { "Person should not be null" }).name // valuable information for debuging
     println("Person should not be null $result")
+}
+
+fun checkArrayGroupBy() {
+    val array = arrayOf(3, 5, 6, 7, 2, 90, 6, 21)
+//    val map = array.groupBy {
+//        it
+//    }
+//
+//    val count = map.count()
+//
+//    map.values.forEach { value ->
+//        println(value)
+//    }
+//
+//    println(count)
+
+
+    val (homeTeam, awayTeam, result) = array
+
+    println(homeTeam)
+    println(awayTeam)
+    println(result)
 }
