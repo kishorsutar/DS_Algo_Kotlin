@@ -3,10 +3,6 @@ package com.kishor.ds
 import java.lang.Math.abs
 import java.util.Arrays
 
-
-
-
-
 fun main() {
 //    conditionals()
 //    referntialEquality()
@@ -29,10 +25,10 @@ fun main() {
 //    forEachOnCollections()
 //    combinWithWUniqueOperator()
 //    iterateWithIndexed()
-//    rangesInKotlin()
+    rangesInKotlin()
 //    ternaryOperator()
 //    mathFunction()
-    substringMethod()
+//    substringMethod()
 
 }
 
@@ -239,7 +235,7 @@ fun iterateWithIndexed() {
 }
 
 fun rangesInKotlin() {
-    val i = 19
+    val i = 10
     if (i in 0..10) {
         println("Yes")
     } else {
@@ -280,6 +276,7 @@ fun substringMethod() {
             println(string.substring(i, j))
         }
     }
+
 }
 
 fun isAnagramSort(string1: String, string2: String): Boolean {
