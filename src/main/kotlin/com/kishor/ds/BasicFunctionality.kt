@@ -293,3 +293,9 @@ fun isAnagramSort(string1: String, string2: String): Boolean {
     Arrays.sort(a2)
     return a1.contentEquals(a2)
 }
+
+fun checkingPair() {
+    var pair = Pair<Int, Int>(0, 1)
+
+    pair = Pair(4, 3)
+}
