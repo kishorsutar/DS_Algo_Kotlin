@@ -26,7 +26,7 @@ class BinarySearchTree<T : Comparable<T>> {
 
     }
 
-    fun add(node: Node<T>, elem: T): Node<T> {
+    fun add(node: Node<T>, elem: T): Node<T>? {
         var nodeToReturn: Node<T>? = null
         if (node == null) {
             nodeToReturn = Node(elem, null, null)
@@ -39,7 +39,7 @@ class BinarySearchTree<T : Comparable<T>> {
             }
         }
 
-        return node
+        return nodeToReturn
     }
 
     // private recursive method to find an element in the tree
