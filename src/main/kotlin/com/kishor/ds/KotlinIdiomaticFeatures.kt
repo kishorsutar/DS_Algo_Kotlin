@@ -8,8 +8,8 @@ fun main(args: Array<String>) {
 //    generatingSequenceAsList()
 //    generatingSequence()
 
-    requireNotNull()
-
+//    requireNotNull()
+    passingVararg("Green lantern", "Kishor", "Stan lee")
 }
 
 fun generatingSequenceAsList() {
@@ -85,4 +85,11 @@ fun requireNotNull() {
     val people: People? = null
     val result = requireNotNull(people, { "Person should not be null" }).name // valuable information for debuging
     println("Person should not be null $result")
+}
+
+fun passingVararg(title: String, vararg authors: String) {
+    println(title)
+    authors.forEach {
+        println(it)
+    }
 }
