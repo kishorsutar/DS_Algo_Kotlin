@@ -1,6 +1,7 @@
 package com.kishor.algo.algorithms.tree
 
 import com.kishor.ds.BinarySearchTree
+import java.util.*
 
 fun main() {
     // how to do tee representation
@@ -22,7 +23,7 @@ fun main() {
     val node12 = BinarySearchTree.Node(12)
     node13.left = node12
     val node17 = BinarySearchTree.Node(17)
-    node13.right = node17
+    rRight.right = node17
     val node19 = BinarySearchTree.Node(19)
     node17.right = node19
 
@@ -38,10 +39,12 @@ fun main() {
 //    bst.add(8)
 
     println(preOrderTraversalRecursive(root))
-    println("------------------")
+    println("--------Post----------")
     println(postOrderTravRecursive(root))
-    println("------------------")
+    println("---------In---------")
     println(InOrderTraveRecursive(root))
+    println("---------Level---------")
+    println(levelOrderTraversalIterative(root))
 
 }
 
@@ -70,3 +73,23 @@ fun InOrderTraveRecursive(root: BinarySearchTree.Node<Int>?) {
     println(root.data)
     InOrderTraveRecursive(root.right)
 }
+
+fun levelOrderTraversalIterative(root: BinarySearchTree.Node<Int>?) {
+    if (root == null) return
+
+    val queue = ArrayDeque<BinarySearchTree.Node<Int>>()
+
+    queue.add(root)
+
+    while (queue.isNotEmpty()) {
+        val node = queue.poll()
+
+        println(node.data)
+        if (node.left != null) {
+            queue.add(node.left)
+        }
+        if(node.right != null)
+            queue.add(node.right)
+    }
+}
+
