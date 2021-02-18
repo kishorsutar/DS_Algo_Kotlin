@@ -1,4 +1,4 @@
-package com.kishor.algo.tree
+package com.kishor.algo.algorithms.tree
 
 data class BinaryTreeNode(
     var left: BinaryTreeNode? = null,

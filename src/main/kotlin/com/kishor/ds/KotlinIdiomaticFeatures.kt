@@ -10,6 +10,9 @@ fun main(args: Array<String>) {
 
 //    requireNotNull()
     passingVararg("Green lantern", "Kishor", "Stan lee")
+//    requireNotNull()
+
+    checkArrayGroupBy()
 }
 
 fun generatingSequenceAsList() {
@@ -92,4 +95,26 @@ fun passingVararg(title: String, vararg authors: String) {
     authors.forEach {
         println(it)
     }
+}
+
+fun checkArrayGroupBy() {
+    val array = arrayOf(3, 5, 6, 7, 2, 90, 6, 21)
+//    val map = array.groupBy {
+//        it
+//    }
+//
+//    val count = map.count()
+//
+//    map.values.forEach { value ->
+//        println(value)
+//    }
+//
+//    println(count)
+
+
+    val (homeTeam, awayTeam, result) = array
+
+    println(homeTeam)
+    println(awayTeam)
+    println(result)
 }

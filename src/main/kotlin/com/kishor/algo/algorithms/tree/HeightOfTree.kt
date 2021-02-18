@@ -1,4 +1,4 @@
-package com.kishor.algo.tree
+package com.kishor.algo.algorithms.tree
 
 import java.util.*
 import kotlin.math.max

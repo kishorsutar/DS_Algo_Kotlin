@@ -1,5 +1,8 @@
 package com.kishor.ds
 
+import java.lang.Math.abs
+import java.util.Arrays
+
 fun main() {
 //    conditionals()
 //    referntialEquality()
@@ -22,8 +25,11 @@ fun main() {
 //    forEachOnCollections()
 //    combinWithWUniqueOperator()
 //    iterateWithIndexed()
-//    rangesInKotlin()
-    ternaryOperator()
+    rangesInKotlin()
+//    ternaryOperator()
+//    mathFunction()
+//    substringMethod()
+
 }
 
 
@@ -229,7 +235,7 @@ fun iterateWithIndexed() {
 }
 
 fun rangesInKotlin() {
-    val i = 19
+    val i = 10
     if (i in 0..10) {
         println("Yes")
     } else {
@@ -251,3 +257,45 @@ fun ternaryOperator() {
     println(result)
 }
 
+fun mathFunction() {
+    val array = arrayOf(2, 4, 5, 3, 2, 1, 5)
+    for (i in 0 until array.size) {
+        if (array[kotlin.math.abs(array[i])] > 0) {
+            val d = kotlin.math.abs(array[i])
+            array[d] = -array[kotlin.math.abs(array[i])]
+        } else {
+            println("duplicate ${array[i]}")
+        }
+    }
+}
+
+fun substringMethod() {
+    val string = "momio"
+    for (i in string.indices) {
+        for (j in i+1 until string.length) {
+            println(string.substring(i, j))
+        }
+    }
+
+}
+
+fun isAnagramSort(string1: String, string2: String): Boolean {
+    for (c in string1) {
+
+    }
+
+    if (string1.length != string2.length) {
+        return false
+    }
+    val a1 = string1.toCharArray()
+    val a2 = string2.toCharArray()
+    Arrays.sort(a1)
+    Arrays.sort(a2)
+    return a1.contentEquals(a2)
+}
+
+fun checkingPair() {
+    var pair = Pair<Int, Int>(0, 1)
+
+    pair = Pair(4, 3)
+}

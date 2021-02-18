@@ -8,7 +8,7 @@ fun main() {
 //
 //    declarationOfString()
 //
-//    stringInterpolation()
+    stringInterpolation()
 //
 //    boolean()
 //
@@ -18,7 +18,7 @@ fun main() {
 
 //    flattenListAndArray()
 
-    combiningMutableList()
+//    combiningMutableList()
 
 //    mapOperations()
 
@@ -74,6 +74,16 @@ fun stringInterpolation() {
     println(newWay)
 
     println("${uglyWay.length} and this can concatenate")
+
+    var createString = ""
+
+    for (i in 1..6) {
+        createString += 4
+    }
+
+  createString.toCharArray()[0] = 9.toChar()
+
+    println("create String $createString")
 }
 
 fun boolean() {
@@ -300,6 +310,8 @@ fun creatingMutableHashMap() {
     mutableMapOf.putIfAbsent("TH", "Thenos")
     mutableMapOf["BW"] = "Black Widow"
     mutableMapOf.put("TH", "Ththe")
+
+    val list = mutableMapOf.values.toSet()
     // put if absent
 
     // get or put
