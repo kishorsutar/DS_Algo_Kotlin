@@ -1,10 +1,22 @@
 package com.kishor.oop
 
 fun main() {
-    printAvenger("Tony Stark")
-    printAvenger("Tony Stark", "Iron Man")
-    printAvenger("Tony Stark", "Iron Man", "Chicago")
+//    printAvenger("Tony Stark")
+//    printAvenger("Tony Stark", "Iron Man")
+//    printAvenger("Tony Stark", "Iron Man", "Chicago")
+
+    val hulk = Hulk()
+    val rocket = Rocket()
+    callAvenger(hulk)
+    callAvenger(rocket)
+
 }
+
+fun callAvenger(avengers: Avengers) {
+    avengers.assemble()
+    avengers.protect()
+}
+
 //
 //fun printAvenger(name: String) {
 //    println(name)
