@@ -37,14 +37,18 @@ fun main() {
 //    bst.add(1)
 //    bst.add(5)
 //    bst.add(8)
-
+    println("---------Pre---------")
     println(preOrderTraversalRecursive(root))
+    println("---------Pre---------")
+    println(preOrderIterative(root))
     println("--------Post----------")
     println(postOrderTravRecursive(root))
-    println("---------In---------")
-    println(InOrderTraveRecursive(root))
-    println("---------Level---------")
-    println(levelOrderTraversalIterative(root))
+    println("--------Post----------")
+//    println(postOrderIterative(root))
+//    println("---------In---------")
+//    println(InOrderTraveRecursive(root))
+//    println("---------Level---------")
+//    println(levelOrderTraversalIterative(root))
 
 }
 
@@ -92,4 +96,32 @@ fun levelOrderTraversalIterative(root: BinarySearchTree.Node<Int>?) {
             queue.add(node.right)
     }
 }
+
+fun preOrderIterative(root: BinarySearchTree.Node<Int>) {
+    val stack = Stack<BinarySearchTree.Node<Int>>()
+    stack.push(root)
+
+    while (stack.isNotEmpty()) {
+        val node = stack.pop()
+        println(node.data)
+        if (node.right != null)
+            stack.push(node.right)
+        if (node.left != null)
+            stack.push(node.left)
+    }
+}
+// TODO: Morris traversal algorithm
+//fun postOrderIterative(root: BinarySearchTree.Node<Int>) {
+//    val stack = Stack<BinarySearchTree.Node<Int>>()
+//    while (stack.isNotEmpty()) {
+//        val node = stack.pop()
+//        if (node.right != null)
+//            stack.push(node.right)
+//        if (node.left != null)
+//            stack.push(node.left)
+//
+//        println(node.data)
+//    }
+//}
+
 
