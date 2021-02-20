@@ -158,6 +158,22 @@ open class BST(value: Int) {
     var value = value
     var left: BST? = null
     var right: BST? = null
+
+    fun insert(value: Int) {
+        if (value < this.value) {
+            if (this.left == null) {
+                this.left = BST(value)
+            } else {
+                this.left!!.insert(value)
+            }
+        } else {
+            if (this.right == null) {
+                this.right = BST(value)
+            } else {
+                this.right!!.insert(value)
+            }
+        }
+    }
 }
 
 fun validateBst(tree: BST): Boolean {
@@ -174,6 +190,19 @@ fun validateBST (tree: BST?, minValue: Int, maxValue: Int): Boolean{
 
     return isLeftValid && isRightValid
 
+}
+
+fun minHeightBST(array: List<Int>): BST {
+    return constructBST(array, 0, array.size-1)!!
+}
+
+fun constructBST(array: List<Int>, startIdx: Int, endIdx: Int): BST?  {
+    if (startIdx < endIdx) return null
+    val mid = (startIdx + endIdx) / 2
+    val bst = BST(array[mid])
+    bst.left = constructBST(array, startIdx, mid - 1)
+    bst.right = constructBST(array, mid + 1, endIdx)
+    return bst
 }
 
 
