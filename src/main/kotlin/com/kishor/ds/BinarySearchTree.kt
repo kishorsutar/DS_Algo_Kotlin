@@ -1,5 +1,7 @@
 package com.kishor.ds
 
+import kotlin.math.abs
+
 class BinarySearchTree<T : Comparable<T>> {
 
     var root: Node<T>? = null
@@ -105,3 +107,50 @@ class BinarySearchTree<T : Comparable<T>> {
         return temp
     }
 }
+
+
+fun findTheClosestValue(root: BinarySearchTree.Node<Int>, target: Int): Int {
+    var minValue = Int.MAX_VALUE
+    return findTheClosest(minValue, root, target)
+}
+
+fun findTheClosest(closest: Int, node: BinarySearchTree.Node<Int>?, target: Int): Int {
+    if (node == null) return closest
+    var newClosest = closest
+    val curr = kotlin.math.abs(node.data - target)
+    val prev = kotlin.math.abs(target - newClosest)
+    if (curr < prev) {
+        newClosest = node.data
+        if (curr == 0) {
+            return newClosest
+        }
+    }
+    if (target < node.data) {
+        return findTheClosest(newClosest, node.left, target)
+    } else if (target > node.data){
+        return findTheClosest(newClosest, node.right, target)
+    } else {
+        return newClosest
+    }
+}
+
+fun findClosestIterative(tree: BinarySearchTree.Node<Int>, target: Int): Int {
+    var currentNode = tree
+    var closest = tree.data
+    while (currentNode != null) {
+        if (abs(target - currentNode.data) < abs(target - closest)) {
+            closest = currentNode.data
+        }
+        if (target < currentNode.data) {
+            currentNode = currentNode.left!!
+        } else if (target > currentNode.data) {
+            currentNode = currentNode.right!!
+        } else {
+            return currentNode.data
+        }
+    }
+
+    return closest
+
+}
+
