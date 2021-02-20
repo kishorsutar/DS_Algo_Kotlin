@@ -154,3 +154,26 @@ fun findClosestIterative(tree: BinarySearchTree.Node<Int>, target: Int): Int {
 
 }
 
+open class BST(value: Int) {
+    var value = value
+    var left: BST? = null
+    var right: BST? = null
+}
+
+fun validateBst(tree: BST): Boolean {
+    // Write your code here.
+    return validateBST(tree, Int.MIN_VALUE, Int.MAX_VALUE)
+}
+
+fun validateBST (tree: BST?, minValue: Int, maxValue: Int): Boolean{
+    if (tree == null) return true
+
+    if (tree.value < minValue || tree.value >= minValue) return false
+    val isLeftValid = validateBST(tree.left, minValue, tree.value)
+    val isRightValid = validateBST(tree.right, tree.value, maxValue)
+
+    return isLeftValid && isRightValid
+
+}
+
+
