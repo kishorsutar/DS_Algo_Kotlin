@@ -205,4 +205,43 @@ fun constructBST(array: List<Int>, startIdx: Int, endIdx: Int): BST?  {
     return bst
 }
 
+// Same BSTS problem
 
+fun sameBsts(arrayOne: List<Int>, arrayTwo: List<Int>): Boolean {
+    if (arrayOne.size != arrayTwo.size) return false
+
+    if (arrayOne.size == 0 && arrayTwo.size == 0) return true
+
+    if (arrayOne[0] != arrayTwo[0]) return false
+
+    val leftOne = getSmaller(arrayOne)
+    val leftTwo = getSmaller(arrayTwo)
+    val rightOne = getBiggerOrEqual(arrayOne)
+    val rightTwo = getBiggerOrEqual(arrayTwo)
+
+    return sameBsts(leftOne, leftTwo) && sameBsts(rightOne, rightTwo)
+
+
+}
+
+fun getSmaller(array: List<Int>): List<Int> {
+    val smallerList = mutableListOf<Int>()
+    for (i in 1 until array.size) {
+        if (array[i] < array[0]) {
+            smallerList.add(array[i])
+        }
+    }
+
+    return smallerList
+}
+
+fun getBiggerOrEqual(array: List<Int>): List<Int> {
+    val biggerOrEqual = mutableListOf<Int>()
+    for (i in 1 until array.size) {
+        if (array[i] >= array[0]) {
+            biggerOrEqual.add(array[i])
+        }
+    }
+
+    return biggerOrEqual
+}
