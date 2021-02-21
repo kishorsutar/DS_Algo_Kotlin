@@ -103,3 +103,29 @@ fun nodeDepthLevelIterative(root: BinaryTree): Int {
     return sumOfDepth
 }
 
+
+fun invertRecursiveBinaryTree(tree: BinaryTree?) {
+    if (tree == null) return
+    swapLeftAndRight(tree)
+    invertRecursiveBinaryTree(tree.left)
+    invertRecursiveBinaryTree(tree.right)
+}
+
+fun swapLeftAndRight(node1: BinaryTree) {
+    val left = node1.left
+    node1.left = node1.right
+    node1.right = left
+}
+
+fun invertIterativeBinaryTree(tree: BinaryTree) {
+    val queue = ArrayDeque<BinaryTree>()
+    queue.add(tree)
+    while (queue.isNotEmpty()) {
+        val current = queue.poll()
+        swapLeftAndRight(current)
+        if (current.left != null) queue.add(current.left)
+        if (current.right != null) queue.add(current.right)
+    }
+}
+
+
