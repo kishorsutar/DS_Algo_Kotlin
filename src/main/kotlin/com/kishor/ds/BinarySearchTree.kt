@@ -245,3 +245,26 @@ fun getBiggerOrEqual(array: List<Int>): List<Int> {
 
     return biggerOrEqual
 }
+
+// O(n^2) O(n)
+fun rightSmallerThan(array: List<Int>): List<Int> {
+//    val map = mutableMapOf<Int, Int>()
+    val list = mutableListOf<Int>()
+    for (i in 0 until array.size) {
+        var currentCount = 0
+        for (j in i + 1 until array.size) {
+            if (array[j] < array[i]) {
+                currentCount++
+            }
+        }
+//        map[i] = currentCount
+        list.add(currentCount)
+    }
+
+//    for (i in array.indices) {
+//        list.add(map[i]!!)
+//    }
+
+    return list
+
+}
