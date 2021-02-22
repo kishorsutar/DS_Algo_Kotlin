@@ -1,6 +1,7 @@
 package com.kishor.kotlin.ds
 
 import java.util.*
+import kotlin.math.max
 
 open class BinaryTree(value: Int) {
     var value = value
@@ -127,5 +128,25 @@ fun invertIterativeBinaryTree(tree: BinaryTree) {
         if (current.right != null) queue.add(current.right)
     }
 }
+
+data class TreeInfo(val diameter: Int, val height: Int)
+
+fun binaryTreeDiameter(tree: BinaryTree): Int {
+    return getTreeInfo(tree).diameter
+}
+
+fun getTreeInfo(tree: BinaryTree?): TreeInfo {
+    if (tree == null) return TreeInfo(0, 0)
+
+    val leftTree = getTreeInfo(tree.left)
+    val rightTree = getTreeInfo(tree.right)
+    val longestPathThroughRoot = leftTree.height + rightTree.height
+    val maxDiameterSoFar = max(leftTree.diameter, rightTree.diameter)
+    val currentDiameter = max(longestPathThroughRoot, maxDiameterSoFar)
+    val currentHeight = 1 + max(leftTree.height, rightTree.height)
+
+    return TreeInfo(currentDiameter, currentHeight)
+}
+
 
 
