@@ -1,6 +1,7 @@
 package com.kishor.kotlin.ds
 
 import java.util.*
+import kotlin.math.abs
 import kotlin.math.max
 
 open class BinaryTree(value: Int) {
@@ -15,7 +16,7 @@ fun branchSums(root: BinaryTree): List<Int> {
     return listOfSum
 }
 
-fun getBranchSum(node: BinaryTree, listOfSum: MutableList<Int>, runningSum: Int){
+fun getBranchSum(node: BinaryTree, listOfSum: MutableList<Int>, runningSum: Int) {
     var currentSum = runningSum
 
     if (node.left == null && node.right == null) {
@@ -148,9 +149,11 @@ fun getTreeInfo(tree: BinaryTree?): TreeInfo {
     return TreeInfo(currentDiameter, currentHeight)
 }
 
-data class BinaryTreeWithParent(val value: Int, val left: BinaryTreeWithParent?,
-                                val right: BinaryTreeWithParent?,
-                                val parent: BinaryTreeWithParent?)
+data class BinaryTreeWithParent(
+    val value: Int, val left: BinaryTreeWithParent?,
+    val right: BinaryTreeWithParent?,
+    val parent: BinaryTreeWithParent?
+)
 
 fun findSuccessor(tree: BinaryTreeWithParent, node: BinaryTreeWithParent): BinaryTreeWithParent {
 
@@ -177,6 +180,29 @@ fun getRightmostParent(node: BinaryTreeWithParent): BinaryTreeWithParent {
     }
 
     return currentNode.parent!!
+}
+
+fun heightBalancedTree(tree: BinaryTree): Boolean {
+    return getTreeBalanceInfo(tree).isBalanced
+}
+
+class TreeHeightInfo(height: Int, isBalanced: Boolean) {
+    var height = height
+    var isBalanced = isBalanced
+}
+
+fun getTreeBalanceInfo(node: BinaryTree?): TreeHeightInfo {
+
+    if (node == null) return TreeHeightInfo(-1, true)
+
+    val leftInfo = getTreeBalanceInfo(node.left)
+    val rightInfo = getTreeBalanceInfo(node.right)
+
+    val isBalanced = leftInfo.isBalanced && rightInfo.isBalanced && abs(leftInfo.height - rightInfo.height) <= 1
+
+    val height = 1 + max(leftInfo.height, rightInfo.height)
+
+    return TreeHeightInfo(height, isBalanced)
 }
 
 
