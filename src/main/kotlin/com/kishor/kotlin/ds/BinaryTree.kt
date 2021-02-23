@@ -148,5 +148,37 @@ fun getTreeInfo(tree: BinaryTree?): TreeInfo {
     return TreeInfo(currentDiameter, currentHeight)
 }
 
+data class BinaryTreeWithParent(val value: Int, val left: BinaryTreeWithParent?,
+                                val right: BinaryTreeWithParent?,
+                                val parent: BinaryTreeWithParent?)
+
+fun findSuccessor(tree: BinaryTreeWithParent, node: BinaryTreeWithParent): BinaryTreeWithParent {
+
+    if (node.right != null) return getLeftmostChild(node.right)
+
+    return getRightmostParent(node)
+
+}
+
+fun getLeftmostChild(node: BinaryTreeWithParent): BinaryTreeWithParent {
+    var currentNode = node
+
+    while (currentNode.left == null) {
+        currentNode = currentNode.left!!
+    }
+
+    return currentNode
+}
+
+fun getRightmostParent(node: BinaryTreeWithParent): BinaryTreeWithParent {
+    var currentNode = node
+    while (currentNode.parent != null && currentNode.parent!!.right == currentNode) {
+        currentNode = currentNode.parent!!
+    }
+
+    return currentNode.parent!!
+}
+
+
 
 
