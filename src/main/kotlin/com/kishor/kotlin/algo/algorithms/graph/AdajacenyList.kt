@@ -122,6 +122,7 @@ class AdjacencyList() {
                 }
             }
         }
+        stack.pollLast()
     }
 
     fun breadthFirstSearch(graph: MutableMap<Int, List<Edge>>, rootId: Int, numberOfVertex: Int) {

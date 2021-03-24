@@ -81,7 +81,7 @@ fun stringInterpolation() {
         createString += 4
     }
 
-  createString.toCharArray()[0] = 9.toChar()
+    createString.toCharArray()[0] = 9.toChar()
 
     println("create String $createString")
 }
@@ -310,7 +310,6 @@ fun creatingMutableHashMap() {
     mutableMapOf.putIfAbsent("TH", "Thenos")
     mutableMapOf["BW"] = "Black Widow"
     mutableMapOf.put("TH", "Ththe")
-
     val list = mutableMapOf.values.toSet()
     // put if absent
 

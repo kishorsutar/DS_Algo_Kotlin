@@ -25,10 +25,12 @@ fun main() {
 //    forEachOnCollections()
 //    combinWithWUniqueOperator()
 //    iterateWithIndexed()
-    rangesInKotlin()
+//    rangesInKotlin()
 //    ternaryOperator()
 //    mathFunction()
 //    substringMethod()
+
+    modOperation()
 
 }
 
@@ -298,4 +300,10 @@ fun checkingPair() {
     var pair = Pair<Int, Int>(0, 1)
 
     pair = Pair(4, 3)
+}
+
+fun modOperation() {
+    val mod = (2 - 5) % 6
+    val div = (2  - 5) / 6
+    println("mod $mod, div $div")
 }
