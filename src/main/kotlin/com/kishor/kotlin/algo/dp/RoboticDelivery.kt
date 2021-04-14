@@ -67,6 +67,21 @@ fun chooseAFlask(numOrders: Int, requirements: IntArray, flaskTypes: Int, markin
     return index
 }
 
+fun isContainsDuplicate(string: String): Boolean {
+    var asciiArray = IntArray(26) { 0 }
+
+    for (ch in string) {
+        val value = 96 - ch.toInt()
+        asciiArray[value]++
+    }
+
+    for (i in 0 until asciiArray.size) {
+        if (asciiArray[i] > 1) return false
+    }
+
+    return true
+}
+
 private fun upperBound(arr: List<Int>?, x: Int): Long {
     var l = 0
     var r = arr!!.size - 1
