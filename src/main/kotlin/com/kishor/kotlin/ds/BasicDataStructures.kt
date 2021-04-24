@@ -311,6 +311,7 @@ fun creatingMutableHashMap() {
     mutableMapOf["BW"] = "Black Widow"
     mutableMapOf.put("TH", "Ththe")
     val list = mutableMapOf.values.toSet()
+
     // put if absent
 
     // get or put
