@@ -26,3 +26,28 @@ class TreeNode(var `val`: Int) {
         }
         return left && right
     }
+
+fun singleNonDuplicate(nums: IntArray): Int {
+    var lo = 0
+    var hi = nums.size - 1
+    while (lo < hi) {
+        val mid = lo + (hi - lo) / 2
+        val halvesAreEven = (hi - mid) % 2 == 0
+        if (nums[mid + 1] == nums[mid]) {
+            if (halvesAreEven) {
+                lo = mid + 2
+            } else {
+                hi = mid - 1
+            }
+        } else if (nums[mid - 1] == nums[mid]) {
+            if (halvesAreEven) {
+                hi = mid - 2
+            } else {
+                lo = mid + 1
+            }
+        } else {
+            return nums[mid]
+        }
+    }
+    return nums[lo]
+}
