@@ -7,11 +7,28 @@ fun main() {
         }
     })
 
+    lambda()
+
     // lambda expression/definition
 //    val lambda: (Int) -> Unit = { s: Int -> println("Lambda $s") }
 
     Program().sum(3, 4) { s: Int -> println("Lambda $s") }
 }
+
+fun lambda() {
+    val square: (Int) -> Int = {
+        it * it
+    }
+    println(square(5))
+    parameter(square)
+
+}
+
+fun parameter(square: (Int) -> Int) {
+    println(square.invoke(6))
+}
+
+
 
 class Program{
 
