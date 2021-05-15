@@ -127,6 +127,12 @@ fun creatingArrays() {
     }
 
 
+    val arr = Array(10) { Array<Int>(2) { 0 } }
+    arr.sortBy {
+        it[0]
+    }
+
+
     // does not modify current array.. adds and returns a new object
     val newArrayWithValue = itemsString.plus(arrayOf("james bond", "Captain America"))
 
